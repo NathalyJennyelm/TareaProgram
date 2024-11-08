@@ -30,8 +30,59 @@ namespace SistemaInventario
                     continue;
                 }
 
-            }
+                // Opción para salir del programa
+                if (opcion == 7) break;
 
+                // Ejecuta la opción seleccionada
+                switch (opcion)
+                {
+                    case 1:
+                        // Agregar producto
+                        Console.Write("Ingrese el nombre del producto: ");
+                        string nombre = Console.ReadLine();
+                        if (string.IsNullOrWhiteSpace(nombre))
+                        {
+                            Console.WriteLine("El nombre no puede estar vacío.");
+                            break;
+                        }
+
+                        Console.Write("Ingrese el precio del producto: ");
+                        if (!decimal.TryParse(Console.ReadLine(), out decimal precio) || precio <= 0)
+                        {
+                            Console.WriteLine("Precio no válido. Debe ser un número positivo.");
+                            break;
+                        }
+
+                        inventario.AgregarProducto(new Producto(nombre, precio));
+                        Console.WriteLine("Producto agregado.");
+                        break;
+
+                    case 2:
+                        // Actualizar precio de un producto
+                        Console.Write("Ingrese el nombre del producto a actualizar: ");
+                        string nombreActualizar = Console.ReadLine();
+                        Console.Write("Ingrese el nuevo precio: ");
+                        if (!decimal.TryParse(Console.ReadLine(), out decimal nuevoPrecio) || nuevoPrecio <= 0)
+                        {
+                            Console.WriteLine("Precio no válido. Debe ser un número positivo.");
+                            break;
+                        }
+
+                        inventario.ActualizarPrecio(nombreActualizar, nuevoPrecio);
+                        break;
+
+                    case 3:
+                        // Eliminar un producto
+                        Console.Write("Ingrese el nombre del producto a eliminar: ");
+                        string nombreEliminar = Console.ReadLine();
+                        inventario.EliminarProducto(nombreEliminar);
+                        break;
+
+                }
+
+
+
+            }
         }
     }
 }
