@@ -78,7 +78,30 @@ namespace SistemaInventario
                         inventario.EliminarProducto(nombreEliminar);
                         break;
 
+                    case 4:
+                        // Filtrar y ordenar productos
+                        Console.Write("Ingrese el precio mínimo para filtrar: ");
+                        if (!decimal.TryParse(Console.ReadLine(), out decimal precioMin) || precioMin < 0)
+                        {
+                            Console.WriteLine("Precio mínimo no válido.");
+                            break;
+                        }
+
+                        inventario.FiltrarYOrdenar(precioMin);
+                        break;
+
+                    case 5:
+                        // Contar y clasificar productos
+                        inventario.ContarYClasificarProductos();
+                        break;
+
+                    case 6:
+                        // Generar reporte resumido
+                        inventario.GenerarReporteResumido();
+                        break;
+
                 }
+
 
 
 
