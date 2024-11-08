@@ -61,5 +61,17 @@ namespace SistemaInventario
                 producto.MostrarInformacion();
             }
         }
+
+        // Método para contar y clasificar productos en rangos de precios
+        public void ContarYClasificarProductos()
+        {
+            var rango1 = productos.Count(p => p.Precio < 100); // Menores a 100
+            var rango2 = productos.Count(p => p.Precio >= 100 && p.Precio <= 500); // Entre 100 y 500
+            var rango3 = productos.Count(p => p.Precio > 500); // Mayores a 500
+
+            Console.WriteLine($"Productos con precio < 100: {rango1}");
+            Console.WriteLine($"Productos con precio entre 100 y 500: {rango2}");
+            Console.WriteLine($"Productos con precio > 500: {rango3}");
+        }
     }
 }
