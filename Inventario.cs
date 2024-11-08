@@ -73,5 +73,26 @@ namespace SistemaInventario
             Console.WriteLine($"Productos con precio entre 100 y 500: {rango2}");
             Console.WriteLine($"Productos con precio > 500: {rango3}");
         }
+        // Método para generar un reporte resumido del inventario
+        public void GenerarReporteResumido()
+        {
+            if (productos.Count == 0)
+            {
+                Console.WriteLine("No hay productos en el inventario.");
+                return;
+            }
+
+            // Cálculos del reporte
+            var precioPromedio = productos.Average(p => p.Precio);
+            var productoMasCaro = productos.OrderByDescending(p => p.Precio).First();
+            var productoMasBarato = productos.OrderBy(p => p.Precio).First();
+
+            // Imprime el reporte
+            Console.WriteLine($"Total de productos: {productos.Count}");
+            Console.WriteLine($"Precio promedio: {precioPromedio:C}");
+            Console.WriteLine($"Producto más caro: {productoMasCaro.Nombre} - {productoMasCaro.Precio:C}");
+            Console.WriteLine($"Producto más barato: {productoMasBarato.Nombre} - {productoMasBarato.Precio:C}");
+        }
     }
+
 }
