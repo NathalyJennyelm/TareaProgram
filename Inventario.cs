@@ -16,6 +16,21 @@ namespace SistemaInventario
         {
             productos.Add(producto);
         }
-
+       
+        // Método para actualizar el precio de un producto específico
+        public void ActualizarPrecio(string nombre, decimal nuevoPrecio)
+        {
+            // Busca el producto por nombre (ignora mayúsculas/minúsculas)
+            var producto = productos.FirstOrDefault(p => p.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+            if (producto != null)
+            {
+                producto.Precio = nuevoPrecio; // Actualiza el precio si se encuentra
+                Console.WriteLine("Precio actualizado.");
+            }
+            else
+            {
+                Console.WriteLine("Producto no encontrado.");
+            }
+        }
     }
 }
