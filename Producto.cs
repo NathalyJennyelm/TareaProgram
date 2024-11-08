@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SistemaInventario
 {
@@ -18,5 +19,13 @@ namespace SistemaInventario
             Nombre = nombre;
             Precio = precio;
         }
+
+        // Método para mostrar la información del producto en consola
+        public void MostrarInformacion()
+        {
+            Console.WriteLine($"Producto: {Nombre}, Precio: {Precio:C}");
+        }
     }
+    
 }
+
