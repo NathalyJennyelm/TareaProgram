@@ -47,5 +47,19 @@ namespace SistemaInventario
                 Console.WriteLine("Producto no encontrado.");
             }
         }
+
+        // Método para filtrar y ordenar productos cuyo precio es mayor a un valor dado
+        public void FiltrarYOrdenar(decimal precioMinimo)
+        {
+            var productosFiltrados = productos.Where(p => p.Precio > precioMinimo)
+                                              .OrderBy(p => p.Precio);
+
+
+            Console.WriteLine("Productos filtrados y ordenados:");
+            foreach (var producto in productosFiltrados)
+            {
+                producto.MostrarInformacion();
+            }
+        }
     }
 }
