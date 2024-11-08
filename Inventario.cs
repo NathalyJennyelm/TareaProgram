@@ -32,5 +32,20 @@ namespace SistemaInventario
                 Console.WriteLine("Producto no encontrado.");
             }
         }
+
+        // Método para eliminar un producto de la lista por su nombre
+        public void EliminarProducto(string nombre)
+        {
+            var producto = productos.FirstOrDefault(p => p.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+            if (producto != null)
+            {
+                productos.Remove(producto); // Elimina el producto si se encuentra
+                Console.WriteLine("Producto eliminado.");
+            }
+            else
+            {
+                Console.WriteLine("Producto no encontrado.");
+            }
+        }
     }
 }
